@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  h2 {
+    text-align: center;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 90%; 
+  }
+  
+  .align-top {
+    vertical-align: top;
+  }
+  
+  input
+   {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+
+  select {
+    width: 104%;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  input[type="submit"] {
+    display: block;
+    width: 104%;
+    padding: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #5a67d8;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  @media screen and (min-width: 768px) {
+    /* Estilos para pantallas más grandes */
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      
+    }
+  }
