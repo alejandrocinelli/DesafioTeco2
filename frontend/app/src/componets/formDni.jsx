@@ -3,7 +3,7 @@ import '../css/formulario.css'
 import Alerta from './alerta';
 import InformacionCliente from './informacionCliente';
 import clienteAxios from '../config/clienteAxios';
-
+//todo hay que corrgir el error que solo se puedan escribir 8 digitos en el dni
 const FormDni = () => {
 
     const [dni,setDni] = useState('')
@@ -13,7 +13,7 @@ const FormDni = () => {
     const handlerSubmit = async (e) => {
         e.preventDefault()
         
-        if(dni.length < 8){
+        if(dni.length < 8 ){
            
             setAlerta({
                 msg: 'El DNI debe tener 8 caracteres',
@@ -27,7 +27,7 @@ const FormDni = () => {
                 setCliente(data)
                 setAlerta({});
             } catch (error) {
-                console.log(error);
+               
                 setAlerta({
                     msg: error.response.data.error ,
                     error: true,

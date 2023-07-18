@@ -15,6 +15,7 @@ function App() {
       <Route path="/cargar-cliente" element={<Formulario/>} />
       <Route path="/consultar-cliente" element={<FormDni/>} />
       <Route path="/clientes" element={<Tabla/>} />
+      <Route path="/editar-clientes" element={<h2>editar el cliente</h2>}/>
     </Routes>
    </BrowserRouter> 
   </>

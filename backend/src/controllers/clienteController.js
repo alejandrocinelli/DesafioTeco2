@@ -29,13 +29,15 @@ const getClientes = async (req, res) => {
         const dniExits = await Cliente.findOne({ dni });
 
         if (apellidoExits || dniExits) {
-            return res.status(400).json({ error: "El apellido  o el DNI ya existe" });
+            const error = new Error("El apellido o el DNI ya existe");
+            return res.status(400).json({ error : error.message });
         }
 
         const cliente = await daoCliente.create({nombre, apellido, sex, dni});
-        res.status(201).json(cliente);
+        res.status(201).json("Cliente creado");
         
     } catch (error) {
+       
         res.status(500).json({ error: error.message });
     }
 
@@ -84,7 +86,8 @@ const updateCliente = async (req, res) => {
 }
 
 const deleteCliente = async (req, res) => {
-    const { id } = req.params;
+    const { id} = req.params;
+    
     try {
         const cliente = await daoCliente.delete(id);
         if (!cliente) {
