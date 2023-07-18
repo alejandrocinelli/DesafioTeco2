@@ -13,13 +13,12 @@ const FormDni = () => {
     const handlerSubmit = async (e) => {
         e.preventDefault()
         
-        if(dni.length < 8 ){
-           
-            setAlerta({
-                msg: 'El DNI debe tener 8 caracteres',
-                error: true,
-                });
-            }
+        if(dni.length < 8){
+          return setAlerta({
+              msg: 'El DNI debe tener 8 digitos',
+              error: true,
+              });
+          }
         
             try {
                 const {data} = await clienteAxios.get(`/consultar-cliente/${dni}`)
@@ -36,6 +35,10 @@ const FormDni = () => {
 
             }
     }
+    const handleDniChange = (e) => {
+      const inputDni = e.target.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
+      setDni(inputDni.slice(0, 8)); // Limitar a 8 dígitos
+    };
 
     const {msg} = alerta
 
@@ -48,7 +51,7 @@ const FormDni = () => {
     <div className="form-group">
       <label htmlFor="dni">DNI:</label>
       <input type="number" id="dni" name="dni" required
-      value={dni} onChange={(e) => setDni(e.target.value)}/>
+      value={dni} onChange={handleDniChange}/>
   
     </div>
  

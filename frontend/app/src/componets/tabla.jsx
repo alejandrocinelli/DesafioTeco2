@@ -1,11 +1,14 @@
 import '../css/tabla.css'
 import { useState , useEffect} from 'react';
 import clienteAxios from '../config/clienteAxios';
+import handleDeleteConfig from '../helper/handlerDelete';
+import { useNavigate } from "react-router-dom";
 //import axios  from 'axios';
 
 const Tabla = () => {
 
   const [list, setList] = useState([]);
+  const navigate = useNavigate()
 
   useEffect(() => {
     // Lógica para obtener los datos de la API
@@ -21,7 +24,7 @@ const Tabla = () => {
     }
     obtenerDatos();
 
-  }, []);
+  }, [list]);
 
   const handleEdit = (id) => {
     // Lógica para editar el registro con el ID proporcionado
@@ -29,8 +32,8 @@ const Tabla = () => {
   };
 
   const handleDelete = (id) => {
-    // Lógica para borrar el registro con el ID proporcionado
-    console.log('Borrar registro con ID:', id);
+    // Lógica para eliminar el registro con el ID proporcionado
+    handleDeleteConfig({id , navigate})
   };
 
   return (
@@ -57,8 +60,8 @@ const Tabla = () => {
               <td>{item.sex}</td>
               
               <td>
-                <button onClick={() => handleEdit(item.id)}>Editar</button>
-                <button onClick={() => handleDelete(item.id)}>Borrar</button>
+                <button onClick={() => handleEdit(item.dni)}>Editar</button>
+                <button onClick={() => handleDelete(item._id)}>Borrar</button>
               </td>
             </tr>
           ))}

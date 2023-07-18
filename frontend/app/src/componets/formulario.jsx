@@ -15,17 +15,17 @@ const formulario = () => {
 
   const handlerSubmit = async (e) => {
     e.preventDefault()
-    console.log(dni,nombre,apellido,sex);
-    if(dni === '' || nombre === '' || apellido === '' || sex === ''){
-     return setAlerta({
-        msg: 'Todos los campos son obligatorios',
-        error: true,
-        });
-     }
+
+     if(dni.length < 8){
+      return setAlerta({
+          msg: 'El DNI debe tener 8 digitos',
+          error: true,
+          });
+      }
 
      try {
       const {data} = await clienteAxios.post('/cargar-cliente', {dni,nombre,apellido,sex})
-      console.log(data);
+      
       if(data === 'Cliente creado'){
         swal("El cliente ha sido creado", {
           icon: "success",
@@ -34,6 +34,7 @@ const formulario = () => {
         setNombre('')
         setApellido('')
         setSex('')
+        setAlerta({})
       }
      } catch (error) {
       swal(error.response.data.error, "Vuelve a intentarlo.", "error");
@@ -41,6 +42,11 @@ const formulario = () => {
      }
       
     }
+
+    const handleDniChange = (e) => {
+      const inputDni = e.target.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
+      setDni(inputDni.slice(0, 8)); // Limitar a 8 dígitos
+    };
 
   const {msg} = alerta
  
@@ -52,7 +58,8 @@ const formulario = () => {
     <div className="form-group">
       <label htmlFor="dni">DNI:</label>
       <input type="number" id="dni" name="dni" required 
-      value={dni} onChange={(e) => setDni(e.target.value)}
+      
+      value={dni} onChange={handleDniChange}
       />
     </div>
     <div className="form-group">
@@ -68,7 +75,7 @@ const formulario = () => {
     <div className="form-group">
       <label htmlFor="sexo">Sexo:</label>
       <select id="sexo" name="sexo" required value={sex} 
-      onChange={(e) => setSex(e.target.value)}
+       onChange={(e) => setSex(e.target.value)}
       >
         <option value="">Seleccione una opción</option>
         <option value="masculino">Masculino</option>

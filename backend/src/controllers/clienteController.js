@@ -63,7 +63,7 @@ const getClientes = async (req, res) => {
 const updateCliente = async (req, res) => {
     const { id } = req.params;
     const {nombre , sex , apellido , dni} = req.body;
-
+   
     try {
         let clienteExist = await daoCliente.getById(id);
         if (!clienteExist) {

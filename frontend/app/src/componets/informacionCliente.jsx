@@ -1,7 +1,6 @@
 import {  useNavigate } from "react-router-dom"
 import '../css/informacionCliente.css'
-import clienteAxios from '../config/clienteAxios'
-import swal from 'sweetalert';
+import handleDeleteConfig from '../helper/handlerDelete';
 
 const informacionCliente = ({cliente}) => {
   
@@ -10,40 +9,13 @@ const informacionCliente = ({cliente}) => {
  
   const handleDelete =  async() => {
    
-    swal({
-      title: "Estas seguro?",
-      text: "Una vez eliminado, no podras recuperar este cliente!",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    })
-    .then((willDelete) => {
-      if (willDelete) { 
-         clienteAxios.delete(`/eliminar-cliente/${cliente._id}`).then(res => {
-          
-          const message = res.data
-          if(message === 'Cliente eliminado'){
-          swal("El cliente ha sido eliminado", {
-            icon: "success",
-          })
-         }
-         }).then(() => {
-         
-          navigate('/clientes')
-        })
-        .catch((error) => {
-         
-          swal(error.response.data.error, "Vuelve a intentarlo.", "error");
-        });
-      } else {
-        swal("El Cliente no fue eliminado");
-      }
-    });
+    handleDeleteConfig({id: cliente._id , navigate})
+   
   }
  
   const handleEdit = () => {
-    console.log(cliente._id);
-    //navigate(`/editar-cliente/${cliente._id}`)
+        navigate(`/editar-clientes/${cliente.dni}`)
+        //navigate(`/editar-cliente`, {state: {cliente}})
   }
  
 
