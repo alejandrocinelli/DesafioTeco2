@@ -51,9 +51,12 @@ const formulario = () => {
   const {msg} = alerta
  
   return (
-    <>
+    <div className='prueba'>
     <h2>Completa los campos del Usuario</h2>
-    {msg && <Alerta alerta={alerta}/>}
+    <div className='alerta'>
+      {msg && <Alerta alerta={alerta}/>}
+    </div>
+    
     <form onSubmit={handlerSubmit} >
     <div className="form-group">
       <label htmlFor="dni">DNI:</label>
@@ -62,6 +65,7 @@ const formulario = () => {
       value={dni} onChange={handleDniChange}
       />
     </div>
+
     <div className="form-group">
       <label htmlFor="nombre">Nombre:</label>
       <input type="text" id="nombre" name="nombre" required
@@ -80,6 +84,7 @@ const formulario = () => {
         <option value="">Seleccione una opción</option>
         <option value="masculino">Masculino</option>
         <option value="femenino">Femenino</option>
+        <option value="no decide">Prefiero no decir</option>
       </select>
     </div>
     
@@ -87,7 +92,8 @@ const formulario = () => {
       <input type="submit" value="Enviar"/>
     </div>
   </form>
-    </>
+  
+    </div>
    
   )
 }

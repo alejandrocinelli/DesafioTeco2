@@ -1,4 +1,4 @@
-import '../css/tabla.css'
+import '../css/tabla.css';
 import { useState , useEffect} from 'react';
 import clienteAxios from '../config/clienteAxios';
 import handleDeleteConfig from '../helper/handlerDelete';
@@ -26,10 +26,10 @@ const Tabla = () => {
 
   }, [list]);
 
-  const handleEdit = (id) => {
-    // Lógica para editar el registro con el ID proporcionado
-    console.log('Editar registro con ID:', id);
-  };
+  const handleEdit = (dni) => {
+    navigate(`/editar-clientes/${dni}`)
+    
+}
 
   const handleDelete = (id) => {
     // Lógica para eliminar el registro con el ID proporcionado
@@ -60,8 +60,8 @@ const Tabla = () => {
               <td>{item.sex}</td>
               
               <td>
-                <button onClick={() => handleEdit(item.dni)}>Editar</button>
-                <button onClick={() => handleDelete(item._id)}>Borrar</button>
+                <button className='editBotton' onClick={() => handleEdit(item.dni)}>Editar</button>
+                <button className='deleteBotton' onClick={() => handleDelete(item._id)}>Borrar</button>
               </td>
             </tr>
           ))}

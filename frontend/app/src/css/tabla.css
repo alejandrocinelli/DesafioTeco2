@@ -1,6 +1,6 @@
 .tabla-responsive {
     
-    width: 55%;
+    width: auto;
     height: 600px; /* Establece la altura del contenedor */
   overflow-y: scroll; /* Agrega desplazamiento vertical */
     
@@ -14,11 +14,14 @@
   table {
     width: 100%;
     border-collapse: collapse;
+    
+
   }
   
   th {
-    padding: 10px;
+    padding: 12px;
     text-align: center;
+    border-bottom: 3px solid #ddd;
   }
   td {
     padding: 10px;
@@ -31,8 +34,22 @@
   
   td {
     border-bottom: 2px solid #ddd;
+    
   }
   
   button {
-    margin-right: 5px;
+    
+    padding: 5px;
+    margin: 5px;
+    font-weight: normal;
+    text-transform: uppercase;
+    background-color: #5a67d8;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .deleteBotton {
+    background-color: #ff0000;
   }

@@ -54,7 +54,7 @@ const editarCliente = () => {
 
   return (
     <>
-    <h2>Editar Cliente</h2>
+    <h2>Editar Cliente </h2>
     <h3>El campo Dni no se podra modificiar</h3>
        
      <form onSubmit={handlerSubmit} >
@@ -83,6 +83,7 @@ const editarCliente = () => {
         <option value="">Seleccione una opción</option>
         <option value="masculino">Masculino</option>
         <option value="femenino">Femenino</option>
+        <option value="no decide">Prefiero no decir</option>
       </select>
     </div>
     

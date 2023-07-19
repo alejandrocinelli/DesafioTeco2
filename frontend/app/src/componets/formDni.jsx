@@ -45,8 +45,10 @@ const FormDni = () => {
   return (
     <>
     <h2>Busca el Usuario por DNI</h2>
-    {msg && <Alerta alerta={alerta}/>}
-
+    <div className='alerta'>
+      {msg && <Alerta alerta={alerta}/>}
+    </div>
+   
     <form onSubmit={handlerSubmit}>
     <div className="form-group">
       <label htmlFor="dni">DNI:</label>
